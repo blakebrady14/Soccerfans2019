@@ -1,5 +1,6 @@
 import java.util.Iterator;
 //I added stuff
+// i added more stuff
 import components.sequence.Sequence;
 import components.sequence.SequenceSecondary;
 import components.stack.Stack;
