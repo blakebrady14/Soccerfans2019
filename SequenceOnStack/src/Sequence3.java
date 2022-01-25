@@ -62,7 +62,48 @@ public class Sequence3<T> extends SequenceSecondary<T> {
         assert newLeftLength <= leftStack.length() + rightStack.length() : ""
                 + "Violation of: newLeftLength <= |leftStack| + |rightStack|";
 
-        // TODO - fill in body
+        /*
+         * Reversing leftStack to get the order right
+         */
+        leftStack.flip();
+        Stack<T> lCopy = leftStack.newInstance();
+
+        /*
+         * while leftStack is not empty and newLeftLength != 0, all elements are
+         * transferred from leftStack to lCopy. newLeftLength is decremented
+         */
+        while (newLeftLength > 0 && leftStack.length() != 0) {
+            lCopy.push(leftStack.pop());
+            newLeftLength--;
+        }
+        lCopy.flip();
+
+        /*
+         * If leftStack is not cleared, the rest of its contents are added to
+         * rightStack, keeping the proper order
+         */
+        leftStack.flip();
+        while (leftStack.length() > 0) {
+            rightStack.push(leftStack.pop());
+        }
+
+        /*
+         * Flipping lCopy to begin adding elements from the right stack
+         */
+        lCopy.flip();
+        while (newLeftLength > 0 && rightStack.length() != 0) {
+
+            lCopy.push(rightStack.pop());
+            newLeftLength--;
+
+        }
+
+        /*
+         * Flipping lCopy one last time to get order right and transferring it
+         * into leftStack
+         */
+
+        leftStack.transferFrom(lCopy);
 
     }
 
