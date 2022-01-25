@@ -1,10 +1,11 @@
 import java.util.Iterator;
-//I added stuff
-// i added more stuff
+
 import components.sequence.Sequence;
 import components.sequence.SequenceSecondary;
 import components.stack.Stack;
 import components.stack.Stack1L;
+//stuff added
+//ww
 
 /**
  * {@code Sequence} represented as a pair of {@code Stack}s with implementations
