@@ -173,7 +173,7 @@ public class Sequence3<T> extends SequenceSecondary<T> {
         assert 0 <= pos : "Violation of: 0 <= pos";
         assert pos <= this.length() : "Violation of: pos <= |this|";
 
-        // TODO - fill in body
+        setLengthOfLeftStack(this.left, this.right, (this.left.length() + this.right.length()-2));
 
     }
 
