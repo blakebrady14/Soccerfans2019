@@ -76,8 +76,6 @@ public class Set2<T> extends SetSecondary<T> {
 
     }
 
-    }
-
     /**
      * Creator of initial representation.
      */
@@ -150,42 +148,47 @@ public class Set2<T> extends SetSecondary<T> {
         assert x != null : "Violation of: x is not null";
         assert this.contains(x) : "Violation of: x is in this";
 
-        java.util.Queue<T> toReturn = this.elements.newInstance();
-        for(T temp : this.elements) {
-            if(!temp.equals(x))  {
-                toReturn.add(temp);
-            }
-            
+        T toReturn = (T) "";
+        Queue<T> copyQ = this.elements.newInstance();
 
+        for (T temp : this.elements) {
+            if (temp.equals(x)) {
+                toReturn = temp;
+            } else {
+                copyQ.enqueue(temp);
+            }
+
+            this.elements.transferFrom(copyQ);
+
+        }
         // This line added just to make the component compilable.
         return toReturn;
     }
 
-     @Override
+    @Override
     public final T removeAny() {
         assert this.size() > 0 : "Violation of: |this| > 0";
 
-        
-        return this.removeAny();
+        return this.elements.dequeue();
     }
 
     @Override
     public final boolean contains(T x) {
         assert x != null : "Violation of: x is not null";
 
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
-        return false;
+        boolean contains = false;
+        for (T elements : this.elements) {
+            if (elements.equals(x)) {
+                contains = true;
+            }
+        }
+        return contains;
     }
 
     @Override
     public final int size() {
 
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
-        return 0;
+        return this.elements.length();
     }
 
     @Override
