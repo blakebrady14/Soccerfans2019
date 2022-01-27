@@ -141,7 +141,7 @@ public class Set2<T> extends SetSecondary<T> {
         assert x != null : "Violation of: x is not null";
         assert !this.contains(x) : "Violation of: x is not in this";
 
-        // TODO - fill in body
+        this.elements.enqueue(x);
 
     }
 
@@ -150,10 +150,15 @@ public class Set2<T> extends SetSecondary<T> {
         assert x != null : "Violation of: x is not null";
         assert this.contains(x) : "Violation of: x is in this";
 
-        // TODO - fill in body
+        java.util.Queue<T> toReturn = this.elements.newInstance();
+        for(T temp : this.elements) {
+            if(!temp.equals(x))  {
+                toReturn.add(temp);
+            }
+            
 
         // This line added just to make the component compilable.
-        return null;
+        return toReturn;
     }
 
     @Override
