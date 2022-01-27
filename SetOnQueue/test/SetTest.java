@@ -1,3 +1,7 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
 import components.set.Set;
 
 /**
@@ -64,107 +68,122 @@ public abstract class SetTest {
         return set;
     }
 
-  //Testing createFromArgsTest
+    //Testing createFromArgsTest
     @Test
-        public void testConstructorTest() {
-            Set <Integer> s1 = createFromArgsTest(5, 6);
-            Set<Integer> s1Expected = createFromArgsTest(5, 6);
-            assertEquals(s1Expected, s1);
+    public void testConstructorTest() {
+        Set<String> s1 = this.createFromArgsTest("5", "6");
+        Set<String> s1Expected = this.createFromArgsTest("5", "6");
+        assertEquals(s1Expected, s1);
     }
+
     //Testing createFromArgsRef
     @Test
-        public void testConstructorRef() {
-            Set <Integer> s1 = createFromArgsRef(5, 6);
-            Set<Integer> s1Expected = createFromArgsRef(5, 6);
-            assertEquals(s1Expected, s1);
+    public void testConstructorRef() {
+        Set<String> s1 = this.createFromArgsRef("5", "6");
+        Set<String> s1Expected = this.createFromArgsRef("5", "6");
+        assertEquals(s1Expected, s1);
     }
+
     //Testing add
     @Test
-        public void testAdd1() {
-            Set <Integer> s1 = createFromArgsTest(5);
-            Set<Integer> s1Expected = createFromArgsTest(5, 6);
-            s1.add(6);
-            assertEquals(s1Expected, s1);
+    public void testAdd1() {
+        Set<String> s1 = this.createFromArgsTest("5");
+        Set<String> s1Expected = this.createFromArgsTest("5", "6");
+        s1.add("6");
+        assertEquals(s1Expected, s1);
     }
+
     //Testing add with empty start
     @Test
-        public void testAdd2() {
-            Set <Integer> s1 = createFromArgsTest();
-            Set<Integer> s1Expected = createFromArgsTest(6);
-            s1.add(6);
-        set.add(s);
+    public void testAdd2() {
+        Set<String> s1 = this.createFromArgsTest();
+        Set<String> s1Expected = this.createFromArgsTest("6");
+        s1.add("6");
+        assertEquals(s1Expected, s1);
     }
-    }
-    assertEquals(s1Expected, s1);
+
     //Testing remove with empty finish
     @Test
-        public void testRemove1() {
-            Set <Integer> s1 = createFromArgsTest(6);
-            Set<Integer> s1Expected = createFromArgsTest();
-            int temp = s1.remove(temp);
-            assertEquals(s1Expected, s1);
-            assertEquals(6, temp);
+    public void testRemove1() {
+        Set<String> s1 = this.createFromArgsTest("6");
+        Set<String> s1Expected = this.createFromArgsTest();
+        String temp = s1.remove("6");
+        assertEquals(s1Expected, s1);
+        assertEquals("6", temp);
     }
+
     //Testing remove with multiple entries
     @Test
-        public void testRemove2() {
-            Set <Integer> s1 = createFromArgsTest(6, 7);
-            Set<Integer> s1Expected = createFromArgsTest(7);
-            int temp = s1.remove(temp);
-            assertEquals(s1Expected, s1);
-            assertEquals(6, temp);
+    public void testRemove2() {
+        Set<String> s1 = this.createFromArgsTest("6", "7");
+        Set<String> s1Expected = this.createFromArgsTest("7");
+        String temp = "6";
+        String temp2 = s1.remove(temp);
+        assertEquals(s1Expected, s1);
+        assertEquals("6", temp);
     }
+
     //Testing contains with contents
     @Test
-        public void testContains1() {
-            Set <Integer> s1 = createFromArgsTest(6);
-            Set<Integer> s1Expected = createFromArgsTest(6);
-            boolean temp = s1.contains(6)
-            assertEquals(s1Expected, s1);
-            assertEquals(True, temp);
+    public void testContains1() {
+        Set<String> s1 = this.createFromArgsTest("6");
+        Set<String> s1Expected = this.createFromArgsTest("6");
+        boolean temp = s1.contains("6");
+        assertEquals(s1Expected, s1);
+        assertEquals(true, temp);
     }
+
     //Testing contains with no contents
     @Test
-        public void testContains2() {
-            Set <Integer> s1 = createFromArgsTest(0);
-            Set<Integer> s1Expected = createFromArgsTest(0);
+    public void testContains2() {
+        Set<String> s1 = this.createFromArgsTest();
+        Set<String> s1Expected = this.createFromArgsTest();
+        boolean temp = s1.contains("6");
+        assertEquals(s1Expected, s1);
+        assertEquals(false, temp);
 
     }
-    boolean temp = s1.contains(6)
-    assertEquals(s1Expected, s1);
-    assertEquals(False, temp);
+
     //Testing size with no contents
     @Test
-        public void testSize1() {
-            Set <Integer> s1 = createFromArgsTest();
-            Set<Integer> s1Expected = createFromArgsTest();
-            int size = s1.size();
-            assertEquals(s1Expected, s1);
-            assertEquals(0, size);
+    public void testSize1() {
+        Set<String> s1 = this.createFromArgsTest();
+        Set<String> s1Expected = this.createFromArgsTest();
+        int size = s1.size();
+        assertEquals(s1Expected, s1);
+        assertEquals(0, size);
     }
+
     //Testing size with contents
     @Test
-        public void testSize2() {
-            Set <Integer> s1 = createFromArgsTest(5);
-            Set<Integer> s1Expected = createFromArgsTest(5);
-            int size = s1.size();
-            assertEquals(s1Expected, s1);
-            assertEquals(1, size);
+    public void testSize2() {
+        Set<String> s1 = this.createFromArgsTest("5");
+        Set<String> s1Expected = this.createFromArgsTest("5");
+        int size = s1.size();
+        assertEquals(s1Expected, s1);
+        assertEquals(1, size);
     }
+
     //Testing removeAny with multiple
     @Test
-        public void testSize2() {
-            Set <Integer> s1 = createFromArgsTest(5, 6);
-            Set<Integer> s1Expected = createFromArgsTest(5, 6);
-            int temp = s1.removeAny();
-            assertEquals(True, s1Expected.contains(temp));
-            s1Expected.remove(temp);
-            assertEquals(s1Expected, s1);
+    public void testRemoveAny1() {
+        Set<String> s1 = this.createFromArgsTest("5", "6");
+        Set<String> s1Expected = this.createFromArgsTest("5", "6");
+        String temp = s1.removeAny();
+        assertEquals(true, s1Expected.contains(temp));
+        s1Expected.remove(temp);
+        assertEquals(s1Expected, s1);
     }
+
     //Testing removeAny with one entry
     @Test
-        public void testSize2() {
-            Set <Integer> s1 = createFromArgsTest(5);
+    public void testRemoveAny2() {
+        Set<String> s1 = this.createFromArgsTest("5");
+        Set<String> s1Expected = this.createFromArgsTest("5");
+        String temp = s1.removeAny();
+        assertEquals(true, s1Expected.contains(temp));
+        s1Expected.remove(temp);
+        assertEquals(s1Expected, s1);
 
     }
 
