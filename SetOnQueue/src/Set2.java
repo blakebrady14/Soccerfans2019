@@ -45,7 +45,36 @@ public class Set2<T> extends SetSecondary<T> {
     private static <T> void moveToFront(Queue<T> q, T x) {
         assert q != null : "Violation of: q is not null";
 
-        // TODO - fill in body
+        /*
+         * Creating a copy of the queue
+         */
+        Queue copy = q.newInstance();
+
+        /*
+         * Declaring a variable stored, which will be set to x
+         */
+        T stored = (T) "";
+
+        /**
+         * For each loop to iterate through q, if the temp value is x it is
+         * stored in temp, if not the temp value is enqueued
+         */
+        for (T temp : q) {
+            if (temp.equals(x)) {
+                stored = temp;
+            } else {
+                copy.enqueue(temp);
+            }
+        }
+
+        /*
+         * Enqueue the stored value if it is not the original "" value
+         */
+        if (!stored.equals("")) {
+            copy.enqueue(stored);
+        }
+
+    }
 
     }
 
