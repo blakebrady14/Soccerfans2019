@@ -161,14 +161,12 @@ public class Set2<T> extends SetSecondary<T> {
         return toReturn;
     }
 
-    @Override
+     @Override
     public final T removeAny() {
         assert this.size() > 0 : "Violation of: |this| > 0";
 
-        // TODO - fill in body
-
-        // This line added just to make the component compilable.
-        return null;
+        
+        return this.removeAny();
     }
 
     @Override
