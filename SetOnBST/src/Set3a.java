@@ -269,7 +269,8 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
         T toRemove = (T) "";
 
         /*
-         * If the tree size is > 1, this is entered. If the size of
+         * If the tree size is > 1, the method will search for the corrrect
+         * label
          */
         if (t.size() > 1) {
 
