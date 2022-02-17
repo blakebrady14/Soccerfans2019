@@ -70,8 +70,6 @@ public abstract class SetTest {
         return set;
     }
 
-    // TODO - add test cases for constructor, add, remove, removeAny, contains, and size
-
     //Testing createFromArgsTest
     @Test
     public void testConstructorTestWithContents() {
@@ -92,8 +90,9 @@ public abstract class SetTest {
     @Test
     public void testAddTwoEntries() {
         Set<String> s1 = this.createFromArgsTest("5");
-        Set<String> s1Expected = this.createFromArgsRef("5", "6");
+        Set<String> s1Expected = this.createFromArgsRef("5", "6", "7");
         s1.add("6");
+        s1.add("7");
         assertEquals(s1Expected, s1);
     }
 
@@ -115,6 +114,20 @@ public abstract class SetTest {
         assertEquals(s1Expected, s1);
     }
 
+    //Testing add with a large tree and lots off additional elements
+    @Test
+    public void testAddComplex() {
+        Set<String> s1 = this.createFromArgsTest("6", "7", "3", "2", "10");
+        Set<String> s1Expected = this.createFromArgsRef("6", "7", "3", "2",
+                "10", "8", "1", "5", "4", "20");
+        s1.add("8");
+        s1.add("1");
+        s1.add("5");
+        s1.add("4");
+        s1.add("20");
+        assertEquals(s1Expected, s1);
+    }
+
     //Testing remove with one entry
     @Test
     public void testRemoveOneEntry() {
@@ -133,7 +146,7 @@ public abstract class SetTest {
         String temp = "6";
         String temp2 = s1.remove(temp);
         assertEquals(s1Expected, s1);
-        assertEquals("6", temp);
+        assertEquals("6", temp2);
     }
 
     //Testing remove with three entries
@@ -144,10 +157,23 @@ public abstract class SetTest {
         String temp = "6";
         String temp2 = s1.remove(temp);
         assertEquals(s1Expected, s1);
-        assertEquals("6", temp);
+        assertEquals("6", temp2);
     }
 
-    //Testing contains with no contents, expecting false
+    //Testing remove multiple times with a big tree
+    @Test
+    public void testRemoveComplex() {
+        Set<String> s1 = this.createFromArgsTest("6", "7", "8", "5", "2");
+        Set<String> s1Expected = this.createFromArgsRef("7", "8", "2");
+        String temp = s1.remove("5");
+        String temp2 = s1.remove("6");
+        assertEquals(s1Expected, s1);
+        assertEquals("6", temp2);
+        assertEquals("5", temp);
+
+    }
+
+    //Testing contains with 3 entries, expecting false
     @Test
     public void testContainsNotIn() {
         Set<String> s1 = this.createFromArgsTest("5", "6", "7");
@@ -250,6 +276,25 @@ public abstract class SetTest {
         String temp = s1.removeAny();
         assertEquals(true, s1Expected.contains(temp));
         s1Expected.remove(temp);
+        assertEquals(s1Expected, s1);
+
+    }
+
+    //Testing removeAny with multiple calls and five entries
+    @Test
+    public void testRemoveAnyComplex() {
+        Set<String> s1 = this.createFromArgsTest("5", "6", "7", "2", "3");
+        Set<String> s1Expected = this.createFromArgsRef("5", "6", "7", "2",
+                "3");
+        String temp = s1.removeAny();
+        String temp2 = s1.removeAny();
+
+        assertEquals(true, s1Expected.contains(temp));
+        assertEquals(true, s1Expected.contains(temp2));
+
+        s1Expected.remove(temp);
+        s1Expected.remove(temp2);
+
         assertEquals(s1Expected, s1);
 
     }
