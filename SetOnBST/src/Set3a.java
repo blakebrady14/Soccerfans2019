@@ -462,11 +462,6 @@ public class Set3a<T extends Comparable<T>> extends SetSecondary<T> {
      */
     @Override
     public final int size() {
-//         int size = 0;
-//         for (T x : this.tree) {
-//             size++;
-//         }
-//         return size;
         return this.tree.size();
     }
 
