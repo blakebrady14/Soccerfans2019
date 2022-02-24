@@ -246,6 +246,48 @@ public class SortingMachine5a<T> extends SortingMachineSecondary<T> {
         }
 
     }
+    //Tomasz's siftDown
+    //----------------------------------------------------------------------------------
+//     private static void siftDown(int[] array, int top, int last) {
+//         assert array != null : "Violation of: array is not null";
+//         assert 0 <= top : "Violation of: 0 <= top";
+//         assert last < array.length : "Violation of: last < |array|";
+//         assert isHeap(array, 2 * top + 1, last) : ""
+//                 + "Violation of: SUBTREE_IS_HEAP(array, 2 * top + 1, last, <=)";
+// //        System.out.print(Arrays.toString(array));
+// //        System.out.println("top:" + top);
+//         assert isHeap(array, 2 * top + 2, last) : ""
+//                 + "Violation of: SUBTREE_IS_HEAP(array, 2 * top + 2, last, <=)";
+//         /*
+//          * No need to check the other requires clause, because it must be true
+//          * when using the array representation for a complete binary tree.
+//          */
+
+//         //left index is 2*i*+1
+//         //right index is 2*i+2
+//         int childIndex = 0;
+//         //if a left child exists
+//         if (2 * top + 1 <= last) {
+//             //if the right child exists and is less than left child, sift right,
+//             //otherwise sift left
+//             if (2 * top + 2 <= last
+//                     && array[2 * top + 2] < array[2 * top + 1]) {
+//                 childIndex = 2 * top + 2;
+//             } else {
+//                 childIndex = 2 * top + 1;
+//             }
+//             //if top is greater than its smallest child, swap their positions
+//             // and check again if top is greater than its two new children
+//             if (array[top] > array[childIndex]) {
+//                 exchangeEntries(array, top, childIndex);
+//                 siftDown(array, childIndex, last);
+//             }
+//         }
+
+//     }
+//-------------------------------------------------------------------------------------------------------------  
+    
+    
 
     /**
      * Heapifies the subtree of the given array rooted at the given {@code top}.
