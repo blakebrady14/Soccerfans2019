@@ -1,4 +1,0 @@
-PROGRAM empty IS
-	
-	BEGIN
-END empty
