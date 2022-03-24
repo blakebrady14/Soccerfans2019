@@ -1,0 +1,18 @@
+PROGRAM Run IS
+    
+    INSTRUCTION Turn IS
+        WHILE next-is-empty DO
+            turnleft
+        END WHILE
+    END Turn
+
+BEGIN
+    WHILE true DO
+        Turn
+        IF next-is-empty THEN
+            move
+        ELSE
+            skip    
+        END IF
+    END WHILE
+END Run
